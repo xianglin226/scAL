@@ -138,7 +138,11 @@ class Activelearning():
                print('Iteration: ' + str(i) + ', training size: ', str(snx.shape[0]))
                print(self.performance(pred, testy, proba))
             i += 1
-            
+        
+        #predict on the test samples or on the whole samples
         pred = clf.predict(testx)
         proba = clf.predict_proba(testx)
         return self.performance(pred, testy, proba)
+        #pred = clf.predict(self.x)
+        #proba = clf.predict_proba(self.x)
+        #return self.performance(pred, self.y, proba)
