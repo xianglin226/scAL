@@ -58,3 +58,20 @@ if __name__ == "__main__":
     print(out2)
     print('Model:' + args.model)
     print('Total time: %d seconds.' % int(time() - t0))
+    
+    # Save metrics
+    #L = {"acc\t", "auc\t", "nmi\t", "ari\t", "recall\t", "precision\t", "F1\n"}
+    #Specifically, the SN was varied from 50 to 500 with the budget and the K fixed as 1000 and 20; 
+    #the budget was varied from 100 to 1000 with the K, and the SN fixed as 20 and 50, and the K was varied from 10 to 100 with the budget and the SN fixed as 1000 and 50.
+    path = "/Xiang/results/" + args.data + "/"
+    path = path.replace("/Xiang/data/", "")
+    path = path.replace(".h5", "")
+    filename = str(args.model) + "_sn_" + str(args.sn) + "_k_" + str(args.k) + "_budget_" + str(args.budget)
+    L1 = [str(out1["acc"]), "\t", str(out1["auc"]), "\t", str(out1["nmi"]), "\t", str(out1["ari"]), "\t", str(out1["recall"]), "\t", str(out1["precision"]), "\t", str(out1["F1"]), "\n"]
+    L2 = [str(out2["acc"]), "\t", str(out2["auc"]), "\t", str(out2["nmi"]), "\t", str(out2["ari"]), "\t", str(out2["recall"]), "\t", str(out2["precision"]), "\t", str(out2["F1"]), "\t", str(int(time() - t0)), "\n"]
+    Baseline = open((path + filename + "_Baseline.txt"),"a")
+    Baseline.writelines(L1)
+    Baseline.close()
+    activelearning = open((path + filename + ".txt"),"a")
+    activelearning.writelines(L2)
+    activelearning.close()
