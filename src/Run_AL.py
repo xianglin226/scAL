@@ -14,8 +14,7 @@ import scanpy as sc
 from preprocess import read_dataset, normalize
 from ActiveLearning import Activelearning
 from time import time
-#os.getcwd()
-#os.chdir("/mnt/c/Users/linxi/Google Drive/Papers/IS/Manuscript_AL/data")
+import random
 
 if __name__ == "__main__":
 
@@ -31,7 +30,7 @@ if __name__ == "__main__":
     parser.add_argument('--method', default='E', help='Sample selection algorithm: E - entropy; M: margin; L: likelihood')
     parser.add_argument('--seed', default=1026, help='randomness')
     args = parser.parse_args()
-    
+    random.seed(args.seed)
     #Read data
     data_mat = h5py.File(args.data)
     x=np.array(data_mat["X"])
@@ -45,7 +44,7 @@ if __name__ == "__main__":
     adata = normalize(adata,size_factors=True,normalize_input=True,logtrans_input=True)
     
     #Get AL class
-    AL = Activelearning(adata.X, y, k=args.k, sn=args.sn, budget=args.budget, split=args.split, model=args.model, method=args.method, seed=args.seed)
+    AL = Activelearning(adata.X, y, k=args.k, sn=args.sn, budget=args.budget, split=args.split, model=args.model, method=args.method)
     
     #Run BL model
     out1 = AL.runBaseline()
