@@ -16,7 +16,7 @@ from preprocess import read_dataset, normalize
 #AL model
 class Activelearning():
     def __init__(self, x, y, k=20, sn=50, budget=500, split=0.3, model = "SVM",
-                     method="E", seed=1026):
+                     method="E"):
         super(Activelearning, self).__init__()
         self.x = x
         self.y = y
@@ -26,8 +26,8 @@ class Activelearning():
         self.split = split
         self.model = model
         self.method = method
-        self.seed = seed
         self.n = np.unique(y).shape[0]
+        
 #split data to pool and test
     def datapreprocess1(self, x, y, split):
         poolx, testx, pooly, testy = train_test_split(x, y, test_size=split, stratify=y)
