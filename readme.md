@@ -1,6 +1,7 @@
 # scAL
 An active learning approach for clustering single-cell RNA-seq data
 
+![model](https://github.com/xianglin226/scAL/blob/master/src/AL_structure.jpg?raw=true)
 # Example  
 python Run_AL.py --data ./Datasets/10X_PBMC_select_2100_top2000.h5 --sn 50 --k 20 --budget 800 --split 0.7 --model SVM --method E --seed 1026
 
