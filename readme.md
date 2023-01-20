@@ -15,6 +15,6 @@ python Run_AL.py --data ./Datasets/10X_PBMC_select_2100_top2000.h5 --sn 50 --k 2
 --method: sammple seletion algorithm. Options: E: entropy; M: margin; L: likelihood.  
 --seed: randomness  
 
-#Cite this work  
+# Cite this work  
 Lin, X., Liu, H., Wei, Z., Roy, S. B., & Gao, N. (2022). An active learning approach for clustering single-cell RNA-seq data. Laboratory Investigation, 102(3), 227-235.
 
